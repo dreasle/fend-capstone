@@ -1,5 +1,9 @@
+// Load environment variables
+const dotenv = require('dotenv')
+dotenv.config()
+
 // OpenWeatherMap API Key
-const apiKey = '87a3a1d8611b3598ddddf467d6e956ed';
+const apiKey = process.env.API_KEY;
 const baseURL = 'http://api.openweathermap.org/data/2.5/weather?';
 
 // Event listener for generate click event
