@@ -77,15 +77,16 @@ This is a list of tasks to complete the project
 #### Functionality/Required Tasks
 - [x] Set up readme file
 - [x] Do initial git commit
-- [ ] Create initial file structure
-- [ ] Install Node and Express on local machine
-- [ ] The project file server.js should require express(), and should create an instance of their app using express.
-- [ ] The Express app instance should be pointed to the project folder with .html, .css, and .js files.
-- [ ] The ‘cors’ package should be installed in the project from the command line, required in the project file server.js, and the instance of the app should be setup to use cors().
-- [ ] The body-parser package should be installed and included in the project.
+- [x] Create initial file structure
+- [x] Install Node and Express on local machine
+- [x] The project file server.js should require express(), and should create an instance of their app using express.
+- [x] The Express app instance should be pointed to the project folder with .html, .css, and .js files.
+- [x] The ‘cors’ package should be installed in the project from the command line, required in the project file server.js, and the instance of the app should be setup to use cors().
+- [x] The body-parser package should be installed and included in the project.
 - [ ] Local server should be running and producing feedback to the Command Line through a working callback function.
-- [ ] Create API credentials on OpenWeatherMap.com
-- [ ] The personal API Key for OpenWeatherMap API is saved in a named const variable.
+- [ ] Create API credentials on Geonames.org
+- [ ] Replace the openweather api with geonames api
+- [ ] The personal API Key for Geonames API is saved in a named const variable.
 - [ ] The API Key variable is passed as a parameter to fetch().
 - [ ] Data is successfully returned from the external API.
 - [ ] There should be a GET route setup on the server side with the first argument as a string naming the route, and the second argument a callback function to return the JS object created at the top of server code.
