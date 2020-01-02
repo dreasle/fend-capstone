@@ -5,8 +5,8 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 // JS Object for route endpoints
-// projectData = {}
-projectData = {date: '11/30/2019', temp: '30', content: 'I feel great'}
+projectData = {}
+// projectData = {date: '11/30/2019', temp: '30', content: 'I feel great'}
 
 console.log('About to start server')
 
@@ -34,7 +34,7 @@ app.get('/', function (req, res) {
 })
 
 // Spin up the server
-var port = 3000
+var port = 8082
 app.listen(port, function () {
     console.log(`Running on port: ${port}`)
 })

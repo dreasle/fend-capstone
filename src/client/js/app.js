@@ -1,16 +1,19 @@
 // Load environment variables
-const dotenv = require('dotenv')
-dotenv.config()
+// const dotenv2 = require('dotenv')
+// dotenv2.config()
 
 // OpenWeatherMap API Key
-const apiKey = process.env.API_KEY;
+const apiKey = '87a3a1d8611b3598ddddf467d6e956ed';
+// const apiKey = process.env.API_KEY;
 const baseURL = 'http://api.openweathermap.org/data/2.5/weather?';
 
 // Event listener for generate click event
-document.getElementById('generate').addEventListener('click', updateApp);
+// console.log('about to add click event listener')
+// document.getElementById('generate').addEventListener('click', updateApp);
 
 // Function to run when generate button is clicked
 function updateApp(e){
+    console.log('in updateApp: ', e)
     // Get zip and feelings from UI
     const zip =  document.getElementById('zip').value;
     const feelings =  document.getElementById('feelings').value;
@@ -20,7 +23,8 @@ function updateApp(e){
     .then(function(data){
         // Update the data obj on the server
         const currentDate = new Date(data.dt*1000).toLocaleDateString("en-US");
-        updateData('/save', {
+        updateData('http://localhost:8082/save', {
+        // updateData('/save', {
             date: currentDate, 
             temp: data.main.temp,
             feelings: feelings
@@ -62,7 +66,8 @@ const updateData = async ( url = '', data = {})=>{
 
 // Update the UI/HTML withe the server-side data obj.
 const updateUI = async () => {
-  const request = await fetch('/all');
+  const request = await fetch('http://localhost:8082/all');
+//   const request = await fetch('/all');
   try {
     const newData = await request.json();
     document.getElementById('date').innerHTML = `Date: ${newData.date}`;
@@ -72,3 +77,5 @@ const updateUI = async () => {
     console.log("error", error);
   }
 }
+
+export { updateApp }
