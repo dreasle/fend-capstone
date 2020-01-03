@@ -1,20 +1,20 @@
 import { geonames } from './geonames';
+import { countdown } from './countdown';
+import { ui } from './ui';
 
-function updateCityUI(cityInfo) {
-    document.getElementById('lat').innerHTML = `Lat: ${cityInfo.lat}`;
-    document.getElementById('long').innerHTML = `Long: ${cityInfo.long}`;
-    document.getElementById('state').innerHTML = `State: ${cityInfo.state}`;
-    document.getElementById('country').innerHTML = `Country: ${cityInfo.country}`;
-
-}
-
-// Function to run when generate button is clicked
 function updateApp(e){
-    // Get city info from geonames
-    const city =  document.getElementById('zip').value;
-    console.log("city: ", city)
+    const city =  document.getElementById('city').value;
+    console.log("city: ", city);
+    
+    const tripDate = new Date(document.getElementById('date').value);
+    console.log("tripDate: ", tripDate);
+
+    // Start trip countown
+    countdown.displayCountdown(tripDate);
+    
+    // Get city info from geonames and update ui
     const cityInfo = geonames.get(city)
-    .then(cityInfo => updateCityUI(cityInfo))
+    .then(cityInfo => ui.updateCityUI(cityInfo))
     .catch(err => console.log(err));
 }
 

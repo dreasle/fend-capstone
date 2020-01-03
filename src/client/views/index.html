@@ -10,17 +10,21 @@
 <body>
     <div class="app">
         <div class="container title">
-            <h1>Weather Journal</h1>
-            <p>A place to log the weather <br>and how you feel about it.</p>
+            <h1>Travel App</h1>
+            <p>A place to track your <br>upcoming trip.</p>
         </div>
-        <div class="container zip">
-            <label for="zip">Enter City:</label>
-            <input type="text" id="zip" placeholder="enter city here">
+        <div class="container city">
+            <label for="city">Enter City:</label>
+            <input type="text" id="city" placeholder="enter city here">
         </div>
-        <div class="container feelings">
-            <label for="feelings">How are you feeling today?</label>
-            <textarea id="feelings" rows="5" placeholder="enter feelings here"></textarea>
-            <button id="generate" type="submit"> Generate </button>
+        <div class="container date">
+            <label for="date">Enter trip date:</label>
+            <input type="date" id="date" min="2020-01-01" max="2022-12-31">
+            <button id="generate" type="submit"> Save Trip </button>
+        </div>
+        <div class="container countdown">
+            <label for="countdown">Trip countdown:</label>
+            <div id="countdown"></div>
         </div>
         <div class ="container entry">
             <h2>Results</h2>
