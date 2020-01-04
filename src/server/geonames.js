@@ -9,7 +9,6 @@
  **/
 
 class Geonames {
-    
     // Make a Geonames API GET Request
     async get(city) {
         const usr = 'dreasle';
