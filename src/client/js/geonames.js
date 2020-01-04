@@ -21,7 +21,6 @@ class Geonames {
             const myResData = {
                 lat: resData.geonames[0].lat, 
                 long: resData.geonames[0].lng, 
-                // state: resData.geonames[0].adminCode1,
                 country: resData.geonames[0].countryCode};
             console.log("resData: ", myResData);
             return myResData;
