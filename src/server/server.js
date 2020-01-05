@@ -45,7 +45,8 @@ const http = require('http')
 // GET route for geonames
 app.get('/geonames', function (req, res) {
 
-    var city = "Portland, OR" //TEMP VAR!!!!!!!
+    var city = res.body
+    // var city = "Portland, OR" //TEMP VAR!!!!!!!
 
     const url = `http://api.geonames.org/searchJSON?q=${city}&maxRows=10&username=${process.env.GEONAMES_API_USR}`
 
@@ -81,6 +82,7 @@ const https = require('https')
 
 // GET route for weather
 app.get('/weather', function (req, res) {
+    // const latLon
     const url = `https://api.darksky.net/forecast/${process.env.DARKSKY_API_KEY}/42.3601,-71.0589`
     // console.log('url: ', url)
 
