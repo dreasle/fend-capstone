@@ -4,10 +4,6 @@
 const dotenv = require('dotenv')
 dotenv.config()
 
-// JS Object for route endpoints
-// projectData = {}
-// projectData = {date: '11/30/2019', temp: '30', content: 'I feel great'}
-
 console.log('About to start server')
 
 // Express to run server and routes
@@ -39,22 +35,14 @@ app.listen(port, function () {
     console.log(`Running on port: ${port}`)
 })
 
-// // Set up http
-// const http = require('http')
-
-// // GET route for geonames
-// app.get('/geonames', function (req, res) {
-
-    // var city = res.body
-    // // var city = "Portland, OR" //TEMP VAR!!!!!!!
-
 // Set up node-fetch
 const fetch = require("node-fetch")
 
 // Return lat and long from city name
-async function cityCoords(city) {    
+async function cityCoords(city) {
     const url = `http://api.geonames.org/searchJSON?q=${city}&maxRows=10&username=${process.env.GEONAMES_API_USR}`
-    console.log('in cityCoords url: ', url)
+
+    // console.log('in cityCoords url: ', url)
 
     const getData = async url => {
         try {
@@ -65,7 +53,7 @@ async function cityCoords(city) {
                 lat: json.geonames[0].lat, 
                 long: json.geonames[0].lng, 
                 country: json.geonames[0].countryCode}
-            console.log(" in cityCoords resData: ", myResData)
+            // console.log(" in cityCoords resData: ", myResData)
             return myResData
             // return json
         } catch (error) {
@@ -73,46 +61,41 @@ async function cityCoords(city) {
         }
     }
     return getData(url)
-
-
-    
-      
-
-    // http.get(url, (resp) => {
-    //     let data = '';
-
-    //     resp.on('data', (chunk) => {
-    //       data += chunk;
-    //     })
-      
-    //     resp.on('end', () => {
-    //         var dataObj = JSON.parse(data)
-    //         // console.log("dataObj: ", dataObj)
-    //         const myResData = {
-    //             lat: dataObj.geonames[0].lat, 
-    //             long: dataObj.geonames[0].lng, 
-    //             country: dataObj.geonames[0].countryCode}
-    //         console.log(" in cityCoords resData: ", myResData)
-    //         return myResData
-    //     })
-    // }).on("error", (err) => {
-    //     console.log("Error: " + err.message)
-    // })
 }
 
-
-
 // Return weather from lat and long coords
-async function getWeather(coords) {
+async function getWeather(coords, tripDate) {
     const latLon = `${coords.lat},${coords.long}`
-    const url = `https://api.darksky.net/forecast/${process.env.DARKSKY_API_KEY}/${latLon}`
+    console.log('tripDate: ', tripDate)
+
+    // Set the date we're counting down to
+    var countDownDate = new Date(tripDate).getTime()
+    
+    // Get today's date and time
+    var now = new Date().getTime()
+        
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now
+    
+    // Time calculations for days
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24))
+
+    var url = `https://api.darksky.net/forecast/${process.env.DARKSKY_API_KEY}/${latLon}`
+
+    console.log('days: ', days)
+
+    if (days > 7) {
+        url += `,${countDownDate / 1000}`
+
+    }
+
     console.log('in getWeather url: ', url)
 
     const getData = async url => {
         try {
             const response = await fetch(url)
             const json = await response.json()
-            // console.log("json: ", json)
+            console.log("json: ", json)
             const myResData = {
                 temp: json.currently.temperature,
                 summary: json.hourly.summary}
@@ -126,55 +109,21 @@ async function getWeather(coords) {
     return getData(url)
 }
 
-// // Set up https
-// const https = require('https')
-
-// // GET route for weather
-// app.get('/weather', function (req, res) {
-//     // const latLon
-//     const url = `https://api.darksky.net/forecast/${process.env.DARKSKY_API_KEY}/42.3601,-71.0589`
-//     // console.log('url: ', url)
-
-//     https.get(url, (resp) => {
-
-//         let data = '';
-//     // const res = httpGet
-//     // return res
-//     // return JSON.stringify(myResData)
-// }
-
-// async function return1() {
+// async function return3(item) {
 //     const promise = new Promise((resolve, reject) => {
-//         setTimeout(() => resolve('1'), 3000)
+//         setTimeout(() => resolve('3'), 2000)
 //     })
 //     const res = await promise
-//     return res
+//     return `${item}, ${res}`
 // }
-
-async function return2(item) {
-        console.log("ret2 item: ", item)
-    const promise = new Promise((resolve, reject) => {
-        setTimeout(() => resolve('2'), 1000)
-    })
-    const res = await promise
-    return `${item}, ${res}`
-}
-
-async function return3(item) {
-    const promise = new Promise((resolve, reject) => {
-        setTimeout(() => resolve('3'), 2000)
-    })
-    const res = await promise
-    return `${item}, ${res}`
-}
 
 // POST route for weather
 app.post('/weather', async function (req, res) {
+    console.log("req.body: ", req.body)
 
-    const ret1 = await cityCoords("Portland, OR")
-    const ret2 = await getWeather(ret1)
+    const ret1 = await cityCoords(req.body.city)
+    const ret2 = await getWeather(ret1, req.body.date)
     // const ret3 = await return3(ret2)
-    // res.send(`${ret3}, 4`)
 
     res.send(ret2)
 })
