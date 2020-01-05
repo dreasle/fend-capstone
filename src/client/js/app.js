@@ -34,8 +34,31 @@ function updateApp(event){
             console.log("ERROR: ", error)
         }
     }
-    console.log("days to trip: ", daysToTrip)
     getWeather('http://localhost:8082/weather', {city: tripCity, date: tripDate})
+
+    // Async POST request to get image
+    const getImage = async ( url = '', data = {})=>{
+        try {
+            console.log("data: ", data)
+            const response2 = await fetch(url, {
+                method: 'POST', 
+                credentials: 'same-origin', 
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(res => res.json())
+            .then(function(res) {
+                console.log("here")
+                ui.updateImageUI(res)
+            })
+        } catch(error) {
+            console.log("ERROR: ", error)
+        }
+    }
+    console.log("before getImage, tripCity: ", tripCity)
+    getImage('http://localhost:8082/image', {city: tripCity})
 }
 
 export { updateApp }

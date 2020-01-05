@@ -74,7 +74,7 @@ The UI is updated when the user adds or deletes trips, updates the weather and c
 
 This is a list of tasks to complete the project
 
-#### Functionality/Required Tasks
+#### Functionality
 - [x] Set up readme file
 - [x] Do initial git commit
 - [x] Create initial file structure
@@ -83,25 +83,14 @@ This is a list of tasks to complete the project
 - [x] The Express app instance should be pointed to the project folder with .html, .css, and .js files.
 - [x] The ‘cors’ package should be installed in the project from the command line, required in the project file server.js, and the instance of the app should be setup to use cors().
 - [x] The body-parser package should be installed and included in the project.
-- [ ] Local server should be running and producing feedback to the Command Line through a working callback function.
-- [ ] Create API credentials on Geonames.org
-- [ ] Replace the openweather api with geonames api
-- [ ] The personal API Key for Geonames API is saved in a named const variable.
-- [ ] The API Key variable is passed as a parameter to fetch().
-- [ ] Data is successfully returned from the external API.
-- [ ] There should be a GET route setup on the server side with the first argument as a string naming the route, and the second argument a callback function to return the JS object created at the top of server code.
-- [ ] There should be an asynchronous function to fetch the data from the app endpoint
-- [ ] You should be able to add an entry to the project endpoint using a POST route setup on the server side and executed on the client side as an asynchronous function.
-- [ ] The client side function should take two arguments, the URL to make a POST to, and an object holding the data to POST.
-- [ ] The server side function should create a new entry in the apps endpoint (the named JS object) consisting of the data received from the client side POST.
-- [ ] The input element with the placeholder property set to “enter zip code here” should have an id of zip.
-- [ ] The textarea included in project HTML should have an id of feelings.
-- [ ] The button included in project HTML should have an id of generate.
-- [ ] The div with the id, entryHolder should have three child divs with the ids: date, temp, content
-- [ ] Adds an event listener to an existing HTML button from DOM using Vanilla JS.
-- [ ] In the file app.js, the element with the id of generate should have an addEventListener() method called on it, with click as the first parameter, and a named callback function as the second parameter.
-- [ ] Sets the properties of existing HTML elements from the DOM using Vanilla JavaScript.
-- [ ] Included in the async function to retrieve that app’s data on the client side, existing DOM elements should have their innerHTML properties dynamically set according to data returned by the app route.
+- [x] Local server should be running and producing feedback to the Command Line through a working callback function.
+- [x] Create API credentials on Geonames.org
+- [x] Replace the openweather api with geonames api
+- [x] There should be an asynchronous function to fetch the data from the app endpoint
+- [x] You should be able to add an entry to the project endpoint using a POST route setup on the server side and executed on the client side as an asynchronous function.
+- [x] The client side function should take two arguments, the URL to make a POST to, and an object holding the data to POST.
+- [x] The server side function should create a new entry in the apps endpoint (the named JS object) consisting of the data received from the client side POST.
+
 
 #### Requirements
  - [ ] Webpack config should contain at least 3 scripts, express server, build and test. Additionally, dev server may be included.
@@ -123,6 +112,9 @@ This is a list of tasks to complete the project
 - [ ] Comments are present and effectively explain longer code procedure when necessary.
 - [ ] Code is formatted with consistent, logical, and easy-to-read formatting as described in the Udacity JavaScript Style Guide.
 - [ ] Extend app: At least one of these is required, but the rest are great additional ways to further customize and improve your project!
+
+#### Bugs
+- [ ] Trip date is entering 1 day off and calculating 2 days off
 
 * Add end date and display length of trip.
 * Pull in an image for the country from Pixabay API when the entered location brings up no results (good for obscure localities).

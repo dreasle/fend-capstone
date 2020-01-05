@@ -89,13 +89,13 @@ async function getWeather(coords, tripDate) {
 
     }
 
-    console.log('in getWeather url: ', url)
+    // console.log('in getWeather url: ', url)
 
     const getData = async url => {
         try {
             const response = await fetch(url)
             const json = await response.json()
-            console.log("json: ", json)
+            // console.log("json: ", json)
             const myResData = {
                 temp: json.currently.temperature,
                 summary: json.hourly.summary}
@@ -109,21 +109,46 @@ async function getWeather(coords, tripDate) {
     return getData(url)
 }
 
-// async function return3(item) {
-//     const promise = new Promise((resolve, reject) => {
-//         setTimeout(() => resolve('3'), 2000)
-//     })
-//     const res = await promise
-//     return `${item}, ${res}`
-// }
-
 // POST route for weather
 app.post('/weather', async function (req, res) {
-    console.log("req.body: ", req.body)
+    // console.log("req.body: ", req.body)
 
     const ret1 = await cityCoords(req.body.city)
     const ret2 = await getWeather(ret1, req.body.date)
     // const ret3 = await return3(ret2)
 
     res.send(ret2)
+})
+
+// return pixabay image link
+async function getImageLink(search) {
+    console.log("search: ", search)
+    var url = `https://pixabay.com/api/?key=${process.env.PIXABAY_API_KEY}&q=${search}`
+    console.log("url: ", url)
+
+    const getData = async url => {
+        try {
+            const response = await fetch(url)
+            const json = await response.json()
+            console.log("json: ", json.hits[0].webformatURL)
+            const myResData = {
+                url: json.hits[0].webformatURL}
+            console.log(" in getImageLink myResData: ", myResData)
+            return myResData
+            // return JSON.parse(json.hits[0].webformatURL)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    return getData(url)
+}
+
+// POST route for image
+app.post('/image', async function (req, res) {
+    console.log("req.body: ", req.body)
+
+    const imageLink = await getImageLink(req.body.city)
+    // const imageLink = await getImageLink("Seattle")
+
+    res.send(imageLink)
 })
