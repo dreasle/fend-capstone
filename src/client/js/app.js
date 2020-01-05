@@ -25,28 +25,28 @@ function updateApp(event){
     
     
     // Async POST request to get city info
-    const getCityInfo = async ( url = '', cityName)=>{
-        try {
-            const response = await fetch(url, {
-                method: 'POST', 
-                credentials: 'same-origin', 
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: cityName
-            })
-            .then(res => res.json())
-            .then(function(res) {
-                ui.updateCityUI(res) // send correct data here
-                // document.getElementById('polarity').innerHTML = `Polarity: ${res.polarity}`
-                // document.getElementById('subjectivity').innerHTML = `Subjectivity: ${res.subjectivity}`
-                // document.getElementById('text').innerHTML = `Text: <br>${res.text}`
-            })
-        } catch(error) {
-            console.log("ERROR: ", error)
-        }
-    }
-    getCityInfo('http://localhost:8082/geonames', tripCity)
+    // const getCityInfo = async ( url = '', cityName)=>{
+    //     try {
+    //         const response = await fetch(url, {
+    //             method: 'POST', 
+    //             credentials: 'same-origin', 
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //             body: cityName
+    //         })
+    //         .then(res => res.json())
+    //         .then(function(res) {
+    //             ui.updateCityUI(res) // send correct data here
+    //             // document.getElementById('polarity').innerHTML = `Polarity: ${res.polarity}`
+    //             // document.getElementById('subjectivity').innerHTML = `Subjectivity: ${res.subjectivity}`
+    //             // document.getElementById('text').innerHTML = `Text: <br>${res.text}`
+    //         })
+    //     } catch(error) {
+    //         console.log("ERROR: ", error)
+    //     }
+    // }
+    // getCityInfo('http://localhost:8082/geonames', tripCity)
     
     
     // Async POST request to get weather
@@ -62,7 +62,8 @@ function updateApp(event){
             })
             .then(res => res.json())
             .then(function(res) {
-                ui.updateCityUI(res) // send correct data here
+                // ui.updateCityUI(res) // send correct data here
+                ui.updateWeatherUI(res)
                 // document.getElementById('polarity').innerHTML = `Polarity: ${res.polarity}`
                 // document.getElementById('subjectivity').innerHTML = `Subjectivity: ${res.subjectivity}`
                 // document.getElementById('text').innerHTML = `Text: <br>${res.text}`
