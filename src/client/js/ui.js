@@ -1,4 +1,9 @@
 class UI {
+    updateTripUI(tripInfo) {
+        console.log("tripInfo: ", tripInfo)
+        document.getElementById('destination').innerHTML = tripInfo.city
+        document.getElementById('tripdate').innerHTML = tripInfo.date
+    }
 
     updateWeatherUI(weatherInfo) {
         console.log("weatherInfo: ", weatherInfo)
@@ -10,6 +15,10 @@ class UI {
     updateImageUI(imageUrl) {
         console.log("imageUrl: ", imageUrl)
         document.getElementById('photo').innerHTML = `<img src="${imageUrl.url}">`
+    }
+
+    showTrip() {
+        document.getElementById("trip").style.display="block";
     }
 }
 

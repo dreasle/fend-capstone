@@ -1,5 +1,3 @@
-// import { weather } from './weather';
-
 // Load environment variables
 const dotenv = require('dotenv')
 dotenv.config()
@@ -40,9 +38,9 @@ const fetch = require("node-fetch")
 
 // Return lat and long from city name
 async function cityCoords(city) {
-    const url = `http://api.geonames.org/searchJSON?q=${city}&maxRows=10&username=${process.env.GEONAMES_API_USR}`
+    const url = encodeURI(`http://api.geonames.org/searchJSON?q=${city}&maxRows=10&username=${process.env.GEONAMES_API_USR}`)
 
-    // console.log('in cityCoords url: ', url)
+    console.log('in cityCoords url: ', url)
 
     const getData = async url => {
         try {
@@ -53,7 +51,7 @@ async function cityCoords(city) {
                 lat: json.geonames[0].lat, 
                 long: json.geonames[0].lng, 
                 country: json.geonames[0].countryCode}
-            // console.log(" in cityCoords resData: ", myResData)
+            console.log(" in cityCoords resData: ", myResData)
             return myResData
             // return json
         } catch (error) {
@@ -123,7 +121,7 @@ app.post('/weather', async function (req, res) {
 // return pixabay image link
 async function getImageLink(search) {
     console.log("search: ", search)
-    var url = `https://pixabay.com/api/?key=${process.env.PIXABAY_API_KEY}&q=${search}`
+    var url = encodeURI(`https://pixabay.com/api/?key=${process.env.PIXABAY_API_KEY}&q=${search}&category=places`)
     console.log("url: ", url)
 
     const getData = async url => {

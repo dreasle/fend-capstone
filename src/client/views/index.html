@@ -19,22 +19,27 @@
         <div class="container date">
             <label for="date">Enter trip date:</label>
             <input type="date" id="date" min="2020-01-01" max="2022-12-31">
-            <button id="generate" type="submit"> Save Trip </button>
+            <button id="addtrip" type="submit"> Save Trip </button>
         </div>
-        <div class="container countdown">
-            <label for="countdown">Trip countdown:</label>
-            <div id="countdown"></div>
-        </div>
-        <div class ="container photo" id="photo">
-        </div>
-        <div class ="container weather">
-            <h2>Weather</h2>
-            <div id="weatherHolder">
-                <div class="weather" id="high"></div> 
-                <div class="weather" id="low"></div>
-                <div class="weather" id="summary"></div>
-                <a href="https://darksky.net/poweredby/">Powered by DarkSky</a>
-                
+        <div class="container trip" id="trip">
+            <h2>Saved trip:</h2>
+            <div class="container city">
+                <h3 id="destination">Destination</h3>
+                <h3 id="tripdate">Date</h3>
+            </div>
+            <div class ="container photo" id="photo"></div>
+            <div class ="container countdown">
+                <h3>Countdown</h3>
+                <div id="countdown"></div>
+            </div>
+            <div class ="container weather">
+                <h3>Weather</h3>
+                <div id="weatherHolder">
+                    <div class="weather" id="high"></div> 
+                    <div class="weather" id="low"></div>
+                    <div class="weather" id="summary"></div>
+                    <a href="https://darksky.net/poweredby/">Powered by DarkSky</a>
+                </div>
             </div>
         </div>
     </div>

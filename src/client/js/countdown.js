@@ -1,14 +1,4 @@
-/**
- * Countdown Timer Library
- * Library for getting the countdown timer
- * 
- * @version 1.0.0
- * @author Andrea Lehman
- * 
- * 
- **/
 // Countdown clock inspiration found at https://www.w3schools.com/howto/howto_js_countdown.asp
-
 class Countdown {
     displayCountdown(tripDate) {
         // Set the date we're counting down to
