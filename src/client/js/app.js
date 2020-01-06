@@ -76,6 +76,7 @@ function updateApp(data){
     getImage('http://localhost:8082/image', {city: data.city})
 
     // Update UI
+    ui.hideForm()
     ui.updateTripUI(data)
     ui.showTrip()
 
@@ -89,6 +90,8 @@ function deleteTrip(event){
     if (confirm("Are you sure?")) {
         ui.hideTrip()
         storage.clearAppData()
+        ui.clearForm()
+        ui.showForm()
     }
 }
 

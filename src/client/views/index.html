@@ -5,34 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Capstone | Travel App</title>
+    <script src="https://kit.fontawesome.com/ff2daef84b.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="app">
-        <div class="container title">
-            <h1>Travel App</h1>
-            <p>A place to track your <br>upcoming trip.</p>
+    <header>
+        <div id="banner">
+            Trip Planner
         </div>
-        <div class="container city">
-            <label for="city">Enter City:</label>
-            <input type="text" id="city" placeholder="enter city here">
+        <div id="logo">
+            <i class="fas fa-suitcase"></i>
         </div>
-        <div class="container date">
-            <label for="date">Enter trip date:</label>
-            <input type="date" id="date" min="2020-01-01" max="2022-12-31">
-            <button id="addtrip" type="submit" class="btn"> Save Trip </button>
-        </div>
-        <div class="container trip" id="trip">
-            <h2>Saved trip:</h2>
+    </header>
+    <main class="app">
+        <section id="form">
+            <div class="container city">
+                <label for="city">Enter City:</label>
+                <input type="text" id="city" placeholder="enter city here">
+            </div>
+            <div class="container date">
+                <label for="date">Enter trip date:</label>
+                <input type="date" id="date" min="2020-01-01" max="2022-12-31">
+                <button id="addtrip" type="submit" class="btn"> Save Trip </button>
+            </div>
+        </section>
+        <section id="trip">
+            <h2 id="trip-header">Your trip to:</h2>
             <div class="container city">
                 <h3 id="destination">Destination</h3>
                 <h3 id="tripdate">Date</h3>
             </div>
-            <div class ="container photo" id="photo"></div>
-            <div class ="container countdown">
+            <div id="photo"></div>
+            <div class ="container countdown" id="cd-container">
                 <h3>Countdown</h3>
                 <div id="countdown"></div>
             </div>
-            <div class ="container weather">
+            <div class ="container weather" id="weather-container">
                 <h3>Weather</h3>
                 <div id="weatherHolder">
                     <div class="weather" id="high"></div> 
@@ -42,8 +49,11 @@
                 </div>
             </div>
             <button id="deletetrip" type="submit" class="btn"> Delete Trip </button>
-        </div>
-    </div>
+        </section>
+    </main>
+    <footer>
+        &copy; 2019 Andrea Lehman * All Rights Reserved
+    </footer>
 
 </body>
 </html>

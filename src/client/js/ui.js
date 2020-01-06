@@ -14,11 +14,25 @@ class UI {
     }
 
     showTrip() {
-        document.getElementById("trip").style.display="block";
+        document.getElementById("trip").style.display="grid";
     }
 
     hideTrip() {
         document.getElementById("trip").style.display="none";
+    }
+
+    clearForm() {
+        console.log("clearForm")
+        document.getElementById('city').innerHTML = "Enter city"
+        document.getElementById('date').innerHTML = ""
+    }
+
+    showForm() {
+        document.getElementById("form").style.display="block";
+    }
+
+    hideForm() {
+        document.getElementById("form").style.display="none";
     }
 }
 
