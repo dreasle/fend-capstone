@@ -20,6 +20,10 @@ class UI {
     showTrip() {
         document.getElementById("trip").style.display="block";
     }
+
+    hideTrip() {
+        document.getElementById("trip").style.display="none";
+    }
 }
 
 export const ui = new UI();

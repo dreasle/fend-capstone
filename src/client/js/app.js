@@ -103,4 +103,15 @@ function updateApp(data){
 
 }
 
-export { addTrip }
+function deleteTrip(event){
+    event.preventDefault()
+
+    // Show confirmation alert
+    if (confirm("Are you sure?")) {
+        ui.hideTrip()
+        storage.clearAppData()
+
+    }
+}
+
+export { addTrip, deleteTrip }
