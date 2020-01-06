@@ -2,54 +2,29 @@ import { countdown } from './countdown'
 import { storage } from './storage'
 import { ui } from './ui'
 
-// appData = [{city: city, state: state, country: country, date: date, img: img}]
-
 // If trip saved in local storage, display it
 const appData = storage.getAppData()
-console.log("in app, appData: ", appData)
-
 if (appData) {
     // Update UI to display city, date and weather
-    // // Start trip countown
-    // countdown.displayCountdown(appData.tripdate)
     updateApp(appData)
-    // ui.updateTripUI(appData)
-    // ui.showTrip()
-
-} else {
-    var tripData = {}
 }
 
+// Add trip
 function addTrip(event){
     event.preventDefault()
 
-    const tripCity =  document.getElementById('city').value
-    console.log("city: ", tripCity)
-    
+    const tripCity = document.getElementById('city').value
     const tripDate = new Date(document.getElementById('date').value)
-    console.log("tripDate: ", tripDate)
-
     const formData = {city: tripCity, date: tripDate}
-    console.log("formData: ", formData)
 
     // Store data
     storage.setAppData(formData.city, formData.date)
-    // storage.setAppData(tripCity, state, country, tripDate);
     
     updateApp(formData)
-    // ui.updateTripUI(formData)
-    // ui.showTrip()
 }
 
+// Update app
 function updateApp(data){
-
-    // const tripCity =  document.getElementById('city').value
-    // console.log("city: ", tripCity)
-    
-    // const tripDate = new Date(document.getElementById('date').value)
-    // console.log("tripDate: ", tripDate)
-
-
     // Start trip countown
     const daysToTrip = countdown.displayCountdown(data.date)
     
@@ -88,8 +63,10 @@ function updateApp(data){
             })
             .then(res => res.json())
             .then(function(res) {
-                console.log("here")
-                ui.updateImageUI(res)
+                console.log("res: ", res)
+                if(res){
+                    ui.updateImageUI(res)
+                }
             })
         } catch(error) {
             console.log("ERROR: ", error)
@@ -98,11 +75,13 @@ function updateApp(data){
     console.log("before getImage, data.city: ", data.city)
     getImage('http://localhost:8082/image', {city: data.city})
 
+    // Update UI
     ui.updateTripUI(data)
     ui.showTrip()
 
 }
 
+// Delete trip
 function deleteTrip(event){
     event.preventDefault()
 
@@ -110,7 +89,6 @@ function deleteTrip(event){
     if (confirm("Are you sure?")) {
         ui.hideTrip()
         storage.clearAppData()
-
     }
 }
 

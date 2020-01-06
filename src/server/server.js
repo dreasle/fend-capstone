@@ -64,7 +64,6 @@ async function cityCoords(city) {
 // Return weather from lat and long coords
 async function getWeather(coords, tripDate) {
     const latLon = `${coords.lat},${coords.long}`
-    console.log('tripDate: ', tripDate)
 
     // Set the date we're counting down to
     var countDownDate = new Date(tripDate).getTime()
@@ -80,14 +79,11 @@ async function getWeather(coords, tripDate) {
 
     var url = `https://api.darksky.net/forecast/${process.env.DARKSKY_API_KEY}/${latLon}`
 
-    console.log('days: ', days)
-
+    // If the trip is more than 7 days away, get future weather forcast
     if (days > 7) {
         url += `,${countDownDate / 1000}`
 
     }
-
-    // console.log('in getWeather url: ', url)
 
     const getData = async url => {
         try {
@@ -109,18 +105,13 @@ async function getWeather(coords, tripDate) {
 
 // POST route for weather
 app.post('/weather', async function (req, res) {
-    // console.log("req.body: ", req.body)
-
     const ret1 = await cityCoords(req.body.city)
     const ret2 = await getWeather(ret1, req.body.date)
-    // const ret3 = await return3(ret2)
-
     res.send(ret2)
 })
 
 // return pixabay image link
 async function getImageLink(search) {
-    console.log("search: ", search)
     var url = encodeURI(`https://pixabay.com/api/?key=${process.env.PIXABAY_API_KEY}&q=${search}&category=places`)
     console.log("url: ", url)
 
@@ -143,10 +134,6 @@ async function getImageLink(search) {
 
 // POST route for image
 app.post('/image', async function (req, res) {
-    console.log("req.body: ", req.body)
-
     const imageLink = await getImageLink(req.body.city)
-    // const imageLink = await getImageLink("Seattle")
-
     res.send(imageLink)
 })
