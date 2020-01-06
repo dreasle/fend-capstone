@@ -53,6 +53,11 @@ label {
     padding-bottom: 10px;
 }
 
+#trip {
+    justify-content: center;
+    text-align: center;
+}
+
 #city {
     padding: 10px 0;
     text-align: center;
@@ -71,45 +76,15 @@ h2 {
     padding-bottom: 20px;
 }
 
-
-
-
-
-.trip {
-    display: grid;
-    // grid-template-areas: 
-    //     "img title title"
-    //     "img date date"
-    //     "img p p"
-    //     "btn btn btn";
-    grid-template-areas: 
-        "img"
-        "title"
-        "p"
-        "w"
-        "btn";
-    gap: 10px;
+h3 {
+    padding-bottom: 10px;
+    font-size: 1.5em;
 }
 
-#photo {
-    grid-area: img;
+#weatherHolder {
+    padding-bottom: 10px;
 }
 
-#trip-header {
-    grid-area: title;
-    font-size: 1.5rem;
-}
-
-#cd-container {
-    grid-area: p;
-}
-
-#deletetrip {
-    grid-area: btn;
-
-}
-
-// #addtrip {
 .btn {
     margin-top: 20px;
     padding: 20px 40px;
@@ -120,9 +95,4 @@ h2 {
         background-color: $button-hover-color;
         color: $text-hover-color;
     }
-}
-
-#weather-container {
-    grid-area: w;
-    // width: 100%;
 }

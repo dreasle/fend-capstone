@@ -7,6 +7,8 @@ const appData = storage.getAppData()
 if (appData) {
     // Update UI to display city, date and weather
     updateApp(appData)
+} else {
+    ui.hideTrip()
 }
 
 // Add trip

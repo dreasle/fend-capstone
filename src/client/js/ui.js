@@ -1,12 +1,13 @@
 class UI {
     updateTripUI(tripInfo) {
+        const date = new Date(tripInfo.date)
         document.getElementById('destination').innerHTML = tripInfo.city
-        document.getElementById('tripdate').innerHTML = tripInfo.date
+        document.getElementById('tripdate').innerHTML = date.toDateString()
     }
 
     updateWeatherUI(weatherInfo) {
-        document.getElementById('high').innerHTML = `Temp: ${weatherInfo.temp}`
-        document.getElementById('summary').innerHTML = `Summary: ${weatherInfo.summary}`
+        document.getElementById('high').innerHTML = `${weatherInfo.temp}\u00B0 F`
+        document.getElementById('summary').innerHTML = `${weatherInfo.summary}`
     }
 
     updateImageUI(imageUrl) {
@@ -22,7 +23,6 @@ class UI {
     }
 
     clearForm() {
-        console.log("clearForm")
         document.getElementById('city').innerHTML = "Enter city"
         document.getElementById('date').innerHTML = ""
     }
