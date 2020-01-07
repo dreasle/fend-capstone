@@ -1,12 +1,11 @@
 const request = require('supertest')
-const server = require('./server.js')
+const serv = require('./server.js')
 
-test('Root endpoint', (done) => {
-    const res = request(server)
+test('Root endpoint', ()=> {
+    const res = request(serv)
         .get('/')
         .then(res => {
             expect(res.statusCode).toBe(200)
             // expect(res.statusCode).toEqual(200)
-            done();
         })
 })

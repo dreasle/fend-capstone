@@ -1,4 +1,4 @@
-import { countdown } from './countdown'
+import { displayCountdown } from './countdown'
 import { storage } from './storage'
 import { ui } from './ui'
 
@@ -16,7 +16,8 @@ function addTrip(event){
     event.preventDefault()
 
     const tripCity = document.getElementById('city').value
-    const tripDate = new Date(document.getElementById('date').value)
+    const htmlDate = document.getElementById('date').value
+    const tripDate = new Date(htmlDate+"T00:00:00")
     const formData = {city: tripCity, date: tripDate}
 
     // Store data
@@ -28,7 +29,7 @@ function addTrip(event){
 // Update app
 function updateApp(data){
     // Start trip countown
-    const daysToTrip = countdown.displayCountdown(data.date)
+    const daysToTrip = displayCountdown(data.date)
     
     // Async POST request to get weather
     const getWeather = async ( url = '', data = {})=>{

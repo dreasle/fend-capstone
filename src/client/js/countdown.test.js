@@ -1,5 +1,7 @@
-const cdtest = require('./countdown')
+import { displayCountdown } from './countdown';
 
-test('Verifies days to trip is valid', () => {
-  expect(cdtest.displayCountdown("Thu Jan 09 2020 16:00:00 GMT-0800")).toBe(7)
-})
+test('Verifies countdown is valid', () => {
+    var date = new Date()
+    date.setDate(date.getDate() + 30)
+    expect(displayCountdown(date)).toBe(30);
+})  
