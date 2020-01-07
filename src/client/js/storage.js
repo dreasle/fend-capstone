@@ -8,7 +8,6 @@ class Storage {
             city: city,
             date: tripdate
         }
-        console.log("tripData: ", tripData)
         localStorage.setItem('trips', JSON.stringify(tripData))
     }
 
