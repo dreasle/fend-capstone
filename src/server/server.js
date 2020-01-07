@@ -79,20 +79,16 @@ async function getWeather(coords, tripDate) {
 
     // If the trip is more than 7 days away, get future weather forcast
     if (days > 7) {
-        console.log("countDownDate: ", countDownDate)
         url += `,${countDownDate / 1000}`
-
     }
 
     const getData = async url => {
         try {
             const response = await fetch(url)
             const json = await response.json()
-            // console.log("json: ", json)
             const myResData = {
                 temp: json.currently.temperature,
                 summary: json.hourly.summary}
-            console.log(" in getWeather myResData: ", myResData)
             return myResData
             // return json
         } catch (error) {
@@ -112,16 +108,13 @@ server.post('/weather', async function (req, res) {
 // return pixabay image link
 async function getImageLink(search) {
     var url = encodeURI(`https://pixabay.com/api/?key=${process.env.PIXABAY_API_KEY}&q=${search}&category=places`)
-    console.log("url: ", url)
 
     const getData = async url => {
         try {
             const response = await fetch(url)
             const json = await response.json()
-            console.log("json: ", json.hits[0].webformatURL)
             const myResData = {
                 url: json.hits[0].webformatURL}
-            console.log(" in getImageLink myResData: ", myResData)
             return myResData
             // return JSON.parse(json.hits[0].webformatURL)
         } catch (error) {

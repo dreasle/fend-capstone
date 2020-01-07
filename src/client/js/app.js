@@ -50,12 +50,11 @@ function updateApp(data){
             console.log("ERROR: ", error)
         }
     }
-    getWeather('http://localhost:8082/weather', {city: data.city, date: data.tripdate})
+    getWeather('http://localhost:8082/weather', data)
 
     // Async POST request to get image
     const getImage = async ( url = '', data = {})=>{
         try {
-            console.log("data: ", data)
             const response2 = await fetch(url, {
                 method: 'POST', 
                 credentials: 'same-origin', 
@@ -66,7 +65,6 @@ function updateApp(data){
             })
             .then(res => res.json())
             .then(function(res) {
-                console.log("res: ", res)
                 if(res){
                     ui.updateImageUI(res)
                 }
@@ -75,7 +73,6 @@ function updateApp(data){
             console.log("ERROR: ", error)
         }
     }
-    console.log("before getImage, data.city: ", data.city)
     getImage('http://localhost:8082/image', {city: data.city})
 
     // Update UI

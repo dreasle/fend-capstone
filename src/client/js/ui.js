@@ -11,7 +11,11 @@ class UI {
     }
 
     updateImageUI(imageUrl) {
-        document.getElementById('photo').innerHTML = `<img src="${imageUrl.url}">`
+        if (imageUrl.url) {
+            document.getElementById('photo').innerHTML = `<img src="${imageUrl.url}">`
+        } else {
+            document.getElementById('photo').innerHTML = ""
+        }
     }
 
     showTrip() {
