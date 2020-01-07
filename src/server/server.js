@@ -7,29 +7,29 @@ console.log('About to start server')
 // Express to run server and routes
 const express = require('express')
 
-// Start up app instance
-const app = express()
+// Start up server instance
+const server = express()
 
 // Set up body-parser
 const bodyParser = require('body-parser')
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+server.use(bodyParser.urlencoded({ extended: false }))
+server.use(bodyParser.json())
 
 // Set up cors
 const cors = require('cors')
-app.use(cors())
+server.use(cors())
 
 // Init main project folder
-app.use(express.static('dist'))
+server.use(express.static('dist'))
 
 // Set up default index.html
-app.get('/', function (req, res) {
+server.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 })
 
 // Spin up the server
-var port = 8082
-app.listen(port, function () {
+var port = 8081
+server.listen(port, function () {
     console.log(`Running on port: ${port}`)
 })
 
@@ -104,7 +104,7 @@ async function getWeather(coords, tripDate) {
 }
 
 // POST route for weather
-app.post('/weather', async function (req, res) {
+server.post('/weather', async function (req, res) {
     const ret1 = await cityCoords(req.body.city)
     const ret2 = await getWeather(ret1, req.body.date)
     res.send(ret2)
@@ -133,7 +133,9 @@ async function getImageLink(search) {
 }
 
 // POST route for image
-app.post('/image', async function (req, res) {
+server.post('/image', async function (req, res) {
     const imageLink = await getImageLink(req.body.city)
     res.send(imageLink)
 })
+
+module.exports = server
