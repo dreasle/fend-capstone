@@ -4,14 +4,23 @@
 
 * [Overview](#overview)
 * [Project Environment Setup](#project)
+* [Usage](#usage)
 * [UI](#ui)
 * [APIs](#api)
 * [Tasks](#tasks)
 
 ## Overview
 
-Capstone Project - Travel App - This project is web app that obtains a desired trip location & date from the user, and displays weather and an image of the location using information obtained from external APIs. 
- * Additional functionality and customization to follow*
+Capstone Project - Travel App - This project is web app that obtains a desired trip location & date from the user, and displays weather and an image of the location using information obtained from external APIs. This data is saved to local storage to be displayed when the user returns to the app.
+
+## Usage
+City: Enter the city destination
+Date: Enter the date of travel
+Click Save trip.
+
+This will display the days left until the trip, the weather forcasted for that date and a picture of the destination if available.
+
+Delete trip button: This will delete the current saved trip and return the user to the initial form.
 
 ## Project Environment Setup
 Node and Express should be installed on the local machine. The project file server.js should require express(), and should create an instance of their app using express.
@@ -93,28 +102,28 @@ This is a list of tasks to complete the project
 
 
 #### Requirements
- - [ ] Webpack config should contain at least 3 scripts, express server, build and test. Additionally, dev server may be included.
- - [ ] There should be at least one test for the express server and application javascript
-- [ ] The project must have service workers installed.
-- [ ] All features are usable across modern desktop, tablet, and phone browsers.
-- [ ] Styling is set up in a logical way. All interactive elements have hover states.
-- [ ] HTML structure should be indented properly with classes and ID’s that make sense.
-- [ ] The design should clearly be different from the design used in projects 3 and 4.
-- [ ] Server (src > server > server.js) should be a near duplication of project 3 with the exception of additional added member: value pairs.
-- [ ] (src > client > index.js) At least one function should be imported.
-- [ ] (src > client > index.js) At least one event listener should be imported.
-- [ ] (src > client > index.js) (styles referenced in html/css)
-- [ ] (src > client > js > app.js) There should be URLS and API Keys for at least 3 APIs, including Geonames, Dark Sky, and Pixabay. You can feel free to use more than 3 APIs.
-- [ ] (src > client > js > app.js) There should be a primary object with placeholder member value pairs.
-- [ ] (src > client > js > app.js) There should be a primary function that is exported to index.js.
-- [ ] At least one option from the Extend your Project/Ways to Stand Out sections have been added. Please add a Note to your reviewer which one you chose to implement, or add into your README.
-- [ ] A README file is included detailing the app and all dependencies. The Readme file should have non-default text in it that is specific to this project. It doesn’t have to be thorough, but should have some basic info. Bonus points if correct markdown is used.
-- [ ] Comments are present and effectively explain longer code procedure when necessary.
-- [ ] Code is formatted with consistent, logical, and easy-to-read formatting as described in the Udacity JavaScript Style Guide.
+ - [x] Webpack config should contain at least 3 scripts, express server, build and test. Additionally, dev server may be included.
+ - [x] There should be at least one test for the express server and application javascript
+- [x] The project must have service workers installed.
+- [x] All features are usable across modern desktop, tablet, and phone browsers.
+- [x] Styling is set up in a logical way. All interactive elements have hover states.
+- [x] HTML structure should be indented properly with classes and ID’s that make sense.
+- [x] The design should clearly be different from the design used in projects 3 and 4.
+- [x] Server (src > server > server.js) should be a near duplication of project 3 with the exception of additional added member: value pairs.
+- [x] (src > client > index.js) At least one function should be imported.
+- [x] (src > client > index.js) At least one event listener should be imported.
+- [x] (src > client > index.js) (styles referenced in html/css)
+- [x] (src > client > js > app.js) There should be URLS and API Keys for at least 3 APIs, including Geonames, Dark Sky, and Pixabay. You can feel free to use more than 3 APIs.
+- [x] (src > client > js > app.js) There should be a primary object with placeholder member value pairs.
+- [x] (src > client > js > app.js) There should be a primary function that is exported to index.js.
+- [x] At least one option from the Extend your Project/Ways to Stand Out sections have been added. Please add a Note to your reviewer which one you chose to implement, or add into your README.
+- [x] A README file is included detailing the app and all dependencies. The Readme file should have non-default text in it that is specific to this project. It doesn’t have to be thorough, but should have some basic info. Bonus points if correct markdown is used.
+- [x] Comments are present and effectively explain longer code procedure when necessary.
+- [x] Code is formatted with consistent, logical, and easy-to-read formatting as described in the Udacity JavaScript Style Guide.
 - [ ] Extend app: At least one of these is required, but the rest are great additional ways to further customize and improve your project!
 
 #### Bugs
-- [ ] Trip date is entering 1 day off and calculating 2 days off
+- [x] Trip date is entering 1 day off and calculating 2 days off
 
 * Add end date and display length of trip.
 * Pull in an image for the country from Pixabay API when the entered location brings up no results (good for obscure localities).
